@@ -1,0 +1,13 @@
+.layout{
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  width: 80.2%;
+  margin: 0 auto;
+}
+@media (max-width: 1216px) {
+  .container{
+    width: 90.453%;
+  }
+}

@@ -1,0 +1,12 @@
+.actions-group, .group-right{
+  display: flex;
+  align-items: center;
+}
+.actions-group{
+  justify-content: space-between;
+  .group-right{
+    .view-filter{
+      position: relative;
+    }
+  }
+}

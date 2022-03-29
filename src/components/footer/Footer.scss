@@ -1,0 +1,25 @@
+.footer{
+  position: relative;
+  bottom: 0;
+  background: #F4F4F4;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+  .footer-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 54px;
+    .footer-left{
+      .left-line{
+        margin-bottom: 7px;
+      }
+    }
+    .footer-right{
+      span{
+        color: #2270E4;
+      }
+    }
+  }
+}

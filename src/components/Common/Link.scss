@@ -1,0 +1,29 @@
+.link{
+    display: flex;
+    font-family: 'Roboto';
+    color:  rgba(0, 0, 0, 0.85);
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 15px;
+    list-style: none;
+    letter-spacing: 0.6px;
+    margin-right: 24px;
+    white-space: nowrap;
+    transition: all .1s;
+  .link-icon{
+    margin-left: 9px;
+    transition: all .5s;
+  }
+}
+.-active{
+  color: #2270E4;
+  .link-icon{
+    transform: rotate(180deg);
+  }
+}
+.left{
+    order: -1;
+    margin: 0 9px 0 0;
+}

@@ -1,0 +1,18 @@
+.table-body{
+  .table-row{
+    &:hover{
+      box-shadow: 0 1px 15px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+      .actions {
+        .actions-body {
+          visibility: visible;
+        }
+      }
+    }
+  }
+  .body-empty-note{
+    color: #2270E4;
+    text-align: center;
+    padding: 20px;
+  }
+}

@@ -1,0 +1,31 @@
+.header{
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px #F0F1F2;
+  .header-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 64px;
+    .header-title{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 18px;
+      color: rgba(0, 0, 0, 0.85);
+      white-space: nowrap;
+      letter-spacing: 1px;
+      word-spacing: 2px;
+    }
+    .links-list{
+      flex: 0 0 62.295%;
+    }
+    .header-admin{
+      .link{
+        margin-right: 0;
+      }
+    }
+  }
+}
