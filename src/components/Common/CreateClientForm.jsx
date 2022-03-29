@@ -1,14 +1,18 @@
 import React, {useEffect} from "react";
-import {useState, useContext} from "react";
+import {useState} from "react";
 import PropTypes from "prop-types";
 import "./CreateClientForm.scss";
 import InputWithLabel from "../Clients/Page-Actions-Row/InputWithLabel";
 import BtnType1 from "./BtnType1";
 import {addClient, updateClient} from "../../redux/clients/actions";
-import {StoreContext} from "../../index";
+
+import {useSelector, useDispatch} from "react-redux";
 
 const CreateClientForm = ({useComponentForEdit, idForEdit, closeModal})=>{
-    const clientListStore = useContext(StoreContext)
+    const clientListStore = useSelector((state)=>{
+        return state.clientList
+    })
+    const dispatch = useDispatch()
     const [clientData, setClientData] = useState({
         codeKey: '',
         name: '',
@@ -20,7 +24,7 @@ const CreateClientForm = ({useComponentForEdit, idForEdit, closeModal})=>{
     })
     useEffect(()=>{
         if(useComponentForEdit){
-            clientListStore.getState().clientList.forEach((client)=>{
+            clientListStore.forEach((client)=>{
                 if(client.id === idForEdit){
                     setClientData(client)
                 }
@@ -47,9 +51,9 @@ const CreateClientForm = ({useComponentForEdit, idForEdit, closeModal})=>{
             ...clientData
         }
         if(useComponentForEdit){
-            clientListStore.dispatch(updateClient(payload))
+            dispatch(updateClient(payload))
         }else{
-            clientListStore.dispatch(addClient(payload))
+            dispatch(addClient(payload))
         }
         closeModal()
     }

@@ -1,4 +1,4 @@
-import {GET_FILTER_LIST, UPDATE_CHECKED_VALUE} from "./types";
+import { UPDATE_CHECKED_VALUE} from "./types";
 
 const initialFilterList = [
     {checked: false, labelName: 'Show All', value:'showAll'},
@@ -21,6 +21,12 @@ function filterList(state = initialFilterList, action) {
                         checked: action.payload.position === 0 ? !state[0].checked : !checkboxData.checked
                     }
                 }else{
+                    if(i === 0 && i !== action.payload.position){
+                        return {
+                            ...checkboxData,
+                            checked: false
+                        }
+                    }
                     return {
                         ...checkboxData,
                         checked: action.payload.position === 0 ? !state[0].checked : checkboxData.checked

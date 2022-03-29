@@ -1,21 +1,24 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
+
 import "./TableRow.scss";
+
 import editIcon from "../../../assets/svg-icons/edit-icon.svg";
 import deleteIcon from "../../../assets/svg-icons/delete-icon.svg";
+
 import CreateClientForm from "../../Common/CreateClientForm";
 import Modal from "../../Common/Modal";
 
-import {StoreContext} from "../../../index";
+import {useDispatch} from "react-redux";
 import {deleteClient} from "../../../redux/clients/actions";
 
 const TableRow = ({client})=>{
+    const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
-    const clientStore = useContext(StoreContext)
     const handlerEdit = ()=>{
         setShowModal(!showModal)
     }
     const handlerDelete = ()=>{
-        clientStore.dispatch(deleteClient({id: client.id}))
+        dispatch(deleteClient({id: client.id}))
     }
     return (
         <div className="table-row">

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, createStore, compose} from 'redux';
+import {Provider} from "react-redux";
 import rootReducer from "./redux/rootReducer";
 import thunk from "redux-thunk";
 import './index.css';
@@ -10,16 +11,19 @@ import reportWebVitals from './reportWebVitals';
 
 let store = createStore(
     rootReducer,
-    applyMiddleware(thunk)
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
 )
 export const StoreContext = React.createContext(store);
 
 ReactDOM.render(
-    <StoreContext.Provider value={store}>
+    <Provider store={store}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </StoreContext.Provider>
+    </Provider>
     ,
   document.getElementById('root')
 );

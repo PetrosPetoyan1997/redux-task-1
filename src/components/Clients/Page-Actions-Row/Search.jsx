@@ -1,15 +1,16 @@
-import React, {useContext} from "react";
+import React from "react";
 
 import "./Search.scss";
 import searchIcon from '../../../assets/svg-icons/search-icon.svg';
 import searchButton from '../../../assets/svg-icons/search-button-icon.svg';
 
-import {StoreContext} from "../../../index";
 import {searchClient} from "../../../redux/clients/actions";
+import {useDispatch} from "react-redux";
+
 const Search = ()=>{
-    const clientStore = useContext(StoreContext)
+    const dispatch = useDispatch()
     const onChangeHandler = (evt)=>{
-        clientStore.dispatch(searchClient({value: evt.target.value}))
+        dispatch(searchClient({value: evt.target.value}))
     }
     return (
         <div className="search" onChange={(evt)=>onChangeHandler(evt)}>

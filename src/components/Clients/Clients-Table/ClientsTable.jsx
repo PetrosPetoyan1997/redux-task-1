@@ -1,20 +1,22 @@
 import React from "react";
-import {useContext, useEffect, useState} from "react";
+import {useEffect} from "react";
 import "./ClientsTable.scss";
 
 import TableHeader from "./TableHeader";
 import TableBody from "./TableBody";
 
-import {StoreContext} from "../../../index";
+
 import {getClientsList} from "../../../redux/clients/actions";
+import {useSelector, useDispatch} from "react-redux";
+
 const ClientsTable = ()=>{
-    const clientStore = useContext(StoreContext)
-    const [clientList, setClientList] = useState(clientStore.getState().clientList)
+    const clientList = useSelector((state)=>{
+        return state.clientList
+    })
+    const dispatch = useDispatch()
+
     useEffect(()=>{
-        clientStore.subscribe(()=>{
-            setClientList(clientStore.getState().clientList)
-        })
-        clientStore.dispatch(getClientsList())
+       dispatch(getClientsList())
     },[])
     return (
         <div className="clients-table">

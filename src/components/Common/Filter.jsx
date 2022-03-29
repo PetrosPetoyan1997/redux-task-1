@@ -1,28 +1,26 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect} from "react";
 
 import "./Filter.scss";
 import CheckboxWithLabel from "./CheckboxWithLabel";
 import BtnType1 from "./BtnType1";
 
-import {StoreContext} from "../../index";
-import {getFilterList, updateCheckedValue} from "../../redux/filter/actions";
+import {updateCheckedValue} from "../../redux/filter/actions";
+import {useSelector, useDispatch} from "react-redux";
 
 const Filter = ({cancelHandler})=>{
-    const filterStore = useContext(StoreContext)
-    const [checkboxValues, setCheckboxValues] = useState(filterStore.getState().filterList)
+    const filterList = useSelector((state)=> state.filterList)
+    const dispatch = useDispatch()
+
+    const [checkboxValues, setCheckboxValues] = useState(filterList)
     const checkboxOnChange = (evt, position)=>{
-        filterStore.dispatch(updateCheckedValue({position:position}))
-        setCheckboxValues(filterStore.getState().filterList)
+        dispatch(updateCheckedValue({position:position}))
     }
     const saveHandler = ()=>{
         console.log(checkboxValues, 'checked values')
     }
     useEffect(()=>{
-        filterStore.subscribe(()=>{
-            setCheckboxValues(filterStore.getState().filterList)
-        })
-        filterStore.dispatch(getFilterList())
-    },[])
+        setCheckboxValues(filterList)
+    }, [filterList])
     return (
         <div className="filter">
             <div className="filter-header">
