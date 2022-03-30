@@ -11,30 +11,26 @@ const Filter = ({cancelHandler})=>{
     const filterList = useSelector((state)=> state.filterList)
     const dispatch = useDispatch()
 
-    const [checkboxValues, setCheckboxValues] = useState(filterList)
     const checkboxOnChange = (evt, position)=>{
         dispatch(updateCheckedValue({position:position}))
     }
     const saveHandler = ()=>{
-        console.log(checkboxValues, 'checked values')
+        console.log(filterList, 'checked values')
     }
-    useEffect(()=>{
-        setCheckboxValues(filterList)
-    }, [filterList])
     return (
         <div className="filter">
             <div className="filter-header">
-                <CheckboxWithLabel    labelName={checkboxValues[0].labelName}
-                                      value={checkboxValues[0].value}
-                                      isChecked={checkboxValues[0].checked}
-                                      key={checkboxValues[0].labelName}
+                <CheckboxWithLabel    labelName={filterList[0].labelName}
+                                      value={filterList[0].value}
+                                      isChecked={filterList[0].checked}
+                                      key={filterList[0].labelName}
                                       position={0}
                                       onChange={(evt, position)=>checkboxOnChange(evt, position)}
                 />
             </div>
             <div className='filter-body'>
                 {
-                    checkboxValues.map((checkboxData,i)=>{
+                    filterList.map((checkboxData,i)=>{
                         if(i !== 0){
                             return (
                                 <CheckboxWithLabel
