@@ -1,4 +1,4 @@
-import { UPDATE_CHECKED_VALUE} from "./types";
+import {UPDATE_CHECKED_VALUE} from "./types";
 
 const initialFilterList = [
     {checked: false, labelName: 'Show All', value:'showAll'},

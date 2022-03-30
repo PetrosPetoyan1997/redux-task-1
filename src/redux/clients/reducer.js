@@ -1,14 +1,14 @@
-import {ADD_CLIENT, DELETE_CLIENT, UPDATE_CLIENT, SEARCH_CLIENT, GET_CLIENTS_LIST} from "./types";
+import * as types from "./types";
 
 function clientList(state = [], action) {
     switch (action.type) {
-        case GET_CLIENTS_LIST:
+        case types.GET_CLIENTS_LIST:
             return Object.values(action.payload)
-        case ADD_CLIENT:
+        case types.ADD_CLIENT:
             return [...state, action.payload]
-        case DELETE_CLIENT:
+        case types.DELETE_CLIENT:
             return state.filter((client)=>client.id !== action.payload.id)
-        case UPDATE_CLIENT:
+        case types.UPDATE_CLIENT:
             return (state.map((client)=>{
                 if(client.id === action.payload.id){
                     return action.payload;
@@ -16,7 +16,7 @@ function clientList(state = [], action) {
                     return client;
                 }
             }))
-        case SEARCH_CLIENT:
+        case types.SEARCH_CLIENT:
             /*return [action.payload]*/
             return;
         default:

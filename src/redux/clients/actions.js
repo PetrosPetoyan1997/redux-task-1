@@ -1,4 +1,5 @@
-import {ADD_CLIENT, DELETE_CLIENT, UPDATE_CLIENT, SEARCH_CLIENT, GET_CLIENTS_LIST} from "./types";
+import * as types from "./types";
+
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get, remove} from 'firebase/database';
 const firebaseConfig = {
@@ -82,28 +83,28 @@ export function getClientsList(){
         get(ref(db, 'clientData/clientsList')).then((snapshot)=>{
             let payload = {}
             payload = snapshot.val()
-            dispatch({type: GET_CLIENTS_LIST, payload:{...payload}})
+            dispatch({type: types.GET_CLIENTS_LIST, payload:{...payload}})
         })
     }
 }
 export function addClient(payload){
     return function(dispatch){
         set(ref(db, `clientData/clientsList/${payload.id}`), payload).then(()=>{
-            dispatch({type: ADD_CLIENT, payload})
+            dispatch({type: types.ADD_CLIENT, payload})
         })
     }
 }
 export function deleteClient(payload){
     return function(dispatch){
         remove(ref(db, `clientData/clientsList/${payload.id}`)).then((snapshot)=>{
-            dispatch({type: DELETE_CLIENT, payload})
+            dispatch({type: types.DELETE_CLIENT, payload})
         })
     }
 }
 export function updateClient(payload){
     return function(dispatch){
         set(ref(db, `clientData/clientsList/${payload.id}`), payload).then(()=>{
-            dispatch({type: UPDATE_CLIENT, payload})
+            dispatch({type: types.UPDATE_CLIENT, payload})
         })
     }
 }
