@@ -16,68 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app)
 
 
-/*const initialState  = [
-    {
-        codeKey: '787878787',
-        name: 'մարկետ 1',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-    {
-        codeKey: '787878787',
-        name: 'մարկետ 1',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-    {
-        codeKey: '787878787',
-        name: 'հանրախանութ',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-    {
-        codeKey: '787878787',
-        name: 'մարկետ 1',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-    {
-        codeKey: '787878787',
-        name: 'մարկետ 1',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-    {
-        codeKey: '787878787',
-        name: 'մարկետ 1',
-        legalName: 'Պետոյան Կարապետ Արամի',
-        pl: 'P',
-        psr: '97',
-        psrName: 'Պետոյան Պետրոս Արամի',
-        address: 'ք․ Երևան Նոր Նորք 1զ․ ջուղայի 2շ․ բն9',
-        id: Math.floor(Math.random() * 100),
-    },
-]*/
+
 export function getClientsList(){
     return function(dispatch){
         get(ref(db, 'clientData/clientsList')).then((snapshot)=>{
