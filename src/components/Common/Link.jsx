@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 
 import "./Link.scss";
 
+import {
+    Link
+} from "react-router-dom";
 
-const Link = ({ linkName, linkUrl, active, withIcon, iconName, iconPosition, onClickHandler })=>{
+const LinkType1 = ({ linkName, linkUrl, active, withIcon, iconName, iconPosition, onClickHandler })=>{
     const [importedIcon, setImportedIcon]  = useState('down-arrow')
     const helperOnClickHandler = (evt)=> {
-        evt.preventDefault();
+        //evt.preventDefault();
         onClickHandler(linkName)
     }
     useEffect(()=>{
@@ -21,7 +24,8 @@ const Link = ({ linkName, linkUrl, active, withIcon, iconName, iconPosition, onC
         }
     },[withIcon, iconName])
     return (
-        <a  href={linkUrl}
+        <Link
+            to={linkUrl ? linkUrl: ''}
             className={`link ${active ? '-active' : ''}`}
             onClick={(evt)=>helperOnClickHandler(evt)}
         >
@@ -32,10 +36,10 @@ const Link = ({ linkName, linkUrl, active, withIcon, iconName, iconPosition, onC
                                   alt={iconName} />
                            : null
             }
-        </a>
+        </Link>
     )
 }
-Link.propTypes = {
+LinkType1.propTypes = {
     linkName: PropTypes.string.isRequired,
     linkUrl: PropTypes.string,
     active: PropTypes.bool,
@@ -45,4 +49,4 @@ Link.propTypes = {
     onClick: PropTypes.func,
 }
 
-export default Link;
+export default LinkType1;

@@ -1,8 +1,6 @@
 import React from "react";
 
 import "./Footer.scss";
-import {useState} from "react";
-
 
 const Footer = ()=>{
     return (

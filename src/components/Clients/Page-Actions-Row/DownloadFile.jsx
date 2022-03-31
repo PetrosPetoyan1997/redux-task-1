@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 
 import "./DownloadFile.scss";
-import Link from "../../Common/Link";
+import LinkType1 from "../../Common/Link";
 
 const DownloadFile = ()=>{
     const [linksList] = useState([
@@ -13,7 +13,7 @@ const DownloadFile = ()=>{
         <div className="download-file">
             {
                 linksList.map((link)=>(
-                    <Link
+                    <LinkType1
                         {...link}
                         importIconName={link.withIcon ? 'down-arrow': null}
                         iconPosition={'left'}

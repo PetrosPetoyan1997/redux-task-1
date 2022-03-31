@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 
 import "./LinksList.scss";
-import Link from '../Common/Link';
+import LinkType1 from '../Common/Link';
 
 
 const
@@ -12,7 +12,7 @@ const
         <div className="links-list">
             {
                 linksList.map((link)=> (
-                    <Link
+                    <LinkType1
                         {...link}
                         active={link.linkName === active}
                         iconName={link.withIcon ? 'down-arrow': null}

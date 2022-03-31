@@ -1,0 +1,26 @@
+.auth{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  label{
+    display: inline-block;
+    width: 75px;
+    margin-right: 27px;
+  }
+  input{
+    padding: 0 10px;
+    height: 25px;
+    border: 1px solid black;
+  }
+  .btn-box{
+    display: flex;
+    justify-content: center;
+  }
+  button{
+    width: 150px;
+    padding: 10px;
+    background: blue;
+    color: white;
+  }
+}

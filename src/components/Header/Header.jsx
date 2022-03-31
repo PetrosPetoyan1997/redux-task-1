@@ -2,21 +2,27 @@ import "./Header.scss";
 
 import React from "react";
 import {useState} from "react";
-import Link from "../Common/Link";
+import LinkType1 from "../Common/Link";
 import LinksList from "./LinksList";
+import {signOutUser} from "../../redux/auth/actions";
+import {useDispatch} from "react-redux";
 
 const Header = ()=>{
+    const dispatch = useDispatch();
     const [linksList] = useState([
-        {linkName: 'Clients', linkUrl: '/'},
-        {linkName: 'Supervisors', linkUrl: '/'},
-        {linkName: 'Psr', linkUrl: '/'},
-        {linkName: 'Users', linkUrl: '/'},
-        {linkName: 'Questions', linkUrl: '/'},
-        {linkName: 'Answers', linkUrl: '/'},
-        {linkName: 'Routes', linkUrl: '/'},
-        {linkName: 'Report By', linkUrl: '/', withIcon: true},
-        {linkName: 'CPR', linkUrl: '/', withIcon: true},
+        {linkName: 'Clients', linkUrl: '/clients'},
+        {linkName: 'Supervisors', linkUrl: '/supervisors'},
+        {linkName: 'Psr', linkUrl: '/a'},
+        {linkName: 'Users', linkUrl: '/users'},
+        {linkName: 'Questions', linkUrl: '/b'},
+        {linkName: 'Answers', linkUrl: '/c'},
+        {linkName: 'Routes', linkUrl: '/d'},
+        {linkName: 'Report By', linkUrl: '/x', withIcon: true},
+        {linkName: 'CPR', linkUrl: '/l', withIcon: true},
     ])
+    const logOutHandler = ()=>{
+        dispatch(signOutUser())
+    }
     return (
         <div className="header">
             <div className="container">
@@ -26,13 +32,16 @@ const Header = ()=>{
                     </h1>
                     <LinksList linksList={linksList}/>
                     <div className='header-admin'>
-                        <Link
+                        <LinkType1
                             linkName={'Admin'}
                             withIcon={true}
                             iconName={'down-arrow'}
                             linkUrl={null}
                             onClickHandler={()=>{}}
                         />
+                        <div>
+                            <button onClick={()=>logOutHandler()}>Log out</button>
+                        </div>
                     </div>
                 </div>
             </div>
