@@ -9,28 +9,30 @@ import {
 
 } from "react-router-dom";
 import {useSelector} from "react-redux";
-function Wrapper({children}){
+
+function ProtectedLink({children,to, condition}){
     const userSignedIn = useSelector((state)=>state.userAuthenticateStatus.isSignedIn)
-    return userSignedIn === true ? children : <Navigate to={'/auth'} replace/>
+    return userSignedIn === condition ? children : <Navigate to={to} replace/>
 }
+
 function App() {
     /*const location = useLocation()*/
   return (
         <div className="App">
             <Routes>
-
                 <Route path='/*' element={
-                    <Wrapper to={'/auth'}>
+                    <ProtectedLink to={'/auth'} condition={true}>
                         <Layout/>
-                    </Wrapper>
+                    </ProtectedLink>
                 }/>
 
                 <Route path='/auth' element={
-                    <Auth/>
+                    <ProtectedLink to={'/clients'} condition={false}>
+                        <Auth/>
+                    </ProtectedLink>
                 }/>
                 <Route path={'*'} element={<div>Page no found</div>}/>
             </Routes>
-        {/*  <Layout/>*/}
         </div>
   );
 }

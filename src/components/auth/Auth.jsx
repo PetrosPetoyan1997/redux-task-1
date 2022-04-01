@@ -21,14 +21,13 @@ function Auth() {
 
     const handlerSubmit = async (evt)=>{
         evt.preventDefault()
-       // localStorage.setItem('isAuthenticated', '1');
         if(createAccount){
              await dispatch(authenticateUser(userData))
-            navigate("/clients")
+            navigate("/clients", {replace: true})
 
         }else{
             await dispatch(signIn(userData))
-            navigate("/clients")
+            navigate("/clients", {replace: true})
         }
 
     }
