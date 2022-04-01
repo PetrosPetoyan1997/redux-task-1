@@ -8,8 +8,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {authenticateUser, signIn} from "../../redux/auth/actions";
 
 function Auth() {
-    console.log(localStorage.getItem('isSignedIn'))
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userAlreadyExist = useSelector((state)=>state.userAuthenticateStatus.userAlreadyExist)
